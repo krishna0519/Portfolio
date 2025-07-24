@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Reddy - AI & CS Student Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #bb86fc;
+            /* Lighter purple for dark theme */
+            --secondary-color: #3700b3;
+            /* Darker purple for dark theme */
+            --accent-color: #03dac6;
+            /* Teal/Aqua for dark theme */
+            --background-color: #121212;
+            /* Dark background */
+            --card-background: #1e1e1e;
+            /* Darker cards */
+            --text-color: #e0e0e0;
+            /* Light text */
+            --light-text-color: #b0b0b0;
+            /* Slightly darker light text */
+            --border-color: #333333;
+            /* Dark border */
+            --shadow-light: rgba(0, 0, 0, 0.3);
+            --shadow-medium: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transform: rotate(-30deg);
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px var(--shadow-medium);
+            animation: slideInDown 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.4em;
+            font-weight: 300;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .intro-section {
+            background-color: var(--card-background);
+            margin: -40px auto 40px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+            animation: fadeIn 1.5s ease-out;
+            max-width: 800px;
+        }
+
+        .intro-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .intro-section h2 {
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .intro-section p {
+            font-size: 1.1em;
+            color: var(--light-text-color);
+            margin-bottom: 0;
+        }
+
+        section {
+            padding: 60px 0;
+            background-color: var(--background-color);
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .certification-card {
+            background-color: var(--card-background);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 20px var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--primary-color);
+            /* Added color strip */
+            animation: fadeInScale 0.8s ease-out forwards;
+            opacity: 0;
+            /* Initial state for animation */
+        }
+
+        .certification-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px var(--shadow-medium);
+        }
+
+        .certification-card i {
+            font-size: 3em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: block;
+            animation: bounceIn 1s ease-out;
+        }
+
+        .certification-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .certification-card p {
+            font-size: 0.95em;
+            color: var(--light-text-color);
+        }
+
+        .certification-card .date {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .button-group {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-outline {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icons {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px 0;
+            background-color: var(--card-background);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 2.8em;
+            margin: 0 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            background-color: var(--secondary-color);
+            color: #fff;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            .intro-section {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 1em;
+                margin: 8px;
+            }
+
+            .social-icons a {
+                font-size: 2.2em;
+                margin: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 40px 0;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .intro-section {
+                padding: 20px;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+                margin-bottom: 30px;
+            }
+
+            .certification-card {
+                padding: 20px;
+            }
+
+            .certification-card h3 {
+                font-size: 1.3em;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+                margin: 5px;
+            }
+
+            .social-icons a {
+                font-size: 2em;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Krishna Reddy</h1>
+            <p>B.Tech CSE(AI) I Marine Engineering -NPTEL(IIT Madras)</p>
+        </div>
+    </header>
+
+    <section class="intro-section">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Computer Science student specializing in Artificial Intelligence with strong skills in Python, data structures, and software development. Certified in Azure Fundamentals, GitHub collaboration, and UI/UX design. Gained hands-on experience through real-world projects like Orbitx's Atal Yaan and data analytics simulations. Currently expanding interdisciplinary knowledge through an NPTEL course in Ocean Engineering. Eager to contribute to impactful engineering innovations at Microsoft.
+            </p>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications & Achievements</h2>
+            <div class="certifications-grid">
+                <div class="certification-card" style="animation-delay: 0.1s;">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Microsoft Learn Student Ambassador Certificate</h3>
+                    <p>Mastering Technology with GitHub</p>
+                    <p class="date">2025 [cite: 29]</p>
+                </div>
+                <div class="certification-card" style="animation-delay: 0.2s;">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Certificate of Merit - Data Analytics (Intermediate Level)</h3>
+                    <p>Coding Spoon</p>
+                    <p class="date">2025 [cite: 30]</p>
+                </div>
+                <div class="certification-card" style="animation-delay: 0.3s;">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>UN Certificate in Climate Change, Peace & Security</h3>
+                    <p>UNITAR</p>
+                    <p class="date">June 2025 [cite: 31]</p>
+                </div>
+                <div class="certification-card" style="animation-delay: 0.4s;">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Volunteer Researcher - "Atal Yaan" Reusable Launch Vehicle Project</h3>
+                    <p>Orbitx India Aerospace</p>
+                    <p class="date">2025 [cite: 32]</p>
+                </div>
+                <div class="certification-card" style="animation-delay: 0.5s;">
+                    <i class="fas fa-award"></i>
+                    <h3>Prime Minister's Pariksha Pe Charcha Certificate</h3>
+                    <p>Government of India</p>
+                    <p class="date">2023 [cite: 33]</p>
+                </div>
+                <div class="certification-card" style="animation-delay: 0.6s;">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Website UI/UX Designing using ChatGPT</h3>
+                    <p>Simplilearn SkillUp</p>
+                    <p class="date">Feb 2025 [cite: 34]</p>
+                </div>
+                <div class="certification-card" style="animation-delay: 0.7s;">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Microsoft Azure Fundamentals</h3>
+                    <p>Simplilearn SkillUp</p>
+                    <p class="date">Feb 2025 [cite: 35]</p>
+                </div>
+                <div class="certification-card" style="animation-delay: 0.8s;">
+                    <i class="fas fa-handshake"></i>
+                    <h3>PwC US - Management Consulting Virtual Experience Program</h3>
+                    <p>Forage</p>
+                    <p class="date">Sept 2024 [cite: 36]</p>
+                </div>
+                <div class="certification-card" style="animation-delay: 0.9s;">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Bloomberg Market Concepts (BMC)</h3>
+                    <p>Core Finance & Data Analytics Concepts</p>
+                    <p class="date">Specific Date if available [cite: 37]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="buttons">
+        <div class="container button-group">
+            <a href="https://drive.google.com/file/d/1xzw0Lsk3BUqinRz7XtTUzZ828L8MHQAy/view?usp=drive_link" class="btn" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    </section>
+
+    <section class="social-icons">
+        <div class="container">
+            <a href="https://linkedin.com/in/krishna-reddy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/krishna0519" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Krishna Reddy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const certCards = document.querySelectorAll('.certification-card');
+            certCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.15}s`;
+                card.classList.add('animate-on-load');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
